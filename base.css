@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css?family=Rubik:300,400,500");
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+}
+
+#header {
+  position: relative;
+  height: 60px;
+  width: "100%";
+  /*box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);*/
+  border-bottom: 0px solid #eee;
+  overflow: visible;
+}
+
+h1 {
+  position: absolute;
+  line-height: 60px;
+  display: inline;
+  font-size: 24px;
+  left: 20px;
+}
+
+#nav {
+  position: absolute;
+  right: 0;
+}
+
+h2 {
+  font-size: 16px;
+  display: inline-block;
+  margin-right: 20px;
+  line-height: 60px;
+  color: #999;
+  font-weight: 200;
+  cursor: pointer;
+}
+
+#categories {
+  position: absolute;
+  transition: opacity 0.5s ease;
+  width: 100vw;
+  top: 60px;
+  left: 0px;
+  display: none;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+  background-color: rgba(255, 255, 255, 0.5);
+  flex-wrap: wrap;
+  padding: 5px;
+}
+
+#categories a {
+  line-height: 40px;
+  font-size: 13px;
+  min-width: 90px;
+  flex: 1;
+  margin: 5px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+#categories a:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/*#photo {
+  height: 2000px;
+  width: 100vw;
+  background-attachment: fixed;
+  background-image: url("https://i.ytimg.com/vi/RsFGoETBNy4/maxresdefault.jpg");
+  background-size: cover;
+  background-position: center;
+}*/
+
+@media screen and (max-width: 500px) {
+  #header {
+    height: 110px;
+  }
+  h1 {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  #nav {
+    top: 50px;
+    left: 0;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 20px;
+  }
+  h2 {
+    margin: 0 20px;
+  }
+  #categories {
+    top: 110px;
+    flex-wrap: wrap;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

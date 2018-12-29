@@ -1,0 +1,17 @@
+#cover {
+  height: calc(100vh - 60px);
+  width: 100vw;
+  background-image: url("./images/macbook.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+h3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+  text-align: center;
+  width: 350px;
+}
