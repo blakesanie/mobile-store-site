@@ -1,8 +1,10 @@
 #cover {
+  position: relative;
   height: calc(100vh - 60px);
   width: 100vw;
   background-image: url("./images/macbook.jpg");
-  background-position: center;
+  background-attachment: fixed;
+  background-position: 50% 60%;
   background-size: cover;
 }
 
@@ -14,4 +16,172 @@ h3 {
   font-size: 40px;
   text-align: center;
   width: 350px;
+}
+
+.module {
+  height: 500px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  padding: 30px 30px 0 30px;
+}
+
+.reverse {
+  flex-direction: row-reverse;
+}
+
+.media {
+  border: 0px dotted black;
+  width: 350px;
+  background-image: url("https://i.gifer.com/HrCg.gif");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.textContainer {
+  font-size: 24px;
+  max-width: 50vw;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+h4 {
+  padding: 20px;
+}
+
+h5 {
+  font-size: 30px;
+  padding: 80px 0;
+  text-align: center;
+}
+
+#cats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 10px;
+}
+
+.cat {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  margin: 20px;
+}
+
+.thumb {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+
+.shade {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  padding: 34px 20px;
+  box-sizing: border-box;
+  pointer-events: none;
+  border-radius: 20px;
+}
+
+h6 {
+  text-align: center;
+}
+
+.name {
+  color: white;
+  font-size: 20px;
+}
+
+.view {
+  background-color: white;
+  font-size: 16px;
+  border-radius: 10px;
+  transition: transform 0.2s ease;
+  padding: 15px 30px;
+}
+
+.view:hover {
+  transform: scale(1.05);
+}
+
+#buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 50px;
+}
+
+#buttons img {
+  width: 150px;
+  margin: 10px 30px;
+  transition: transform 0.3s ease;
+}
+
+#buttons img:hover {
+  transform: scale(1.05);
+}
+
+@media screen and (max-width: 500px) {
+  #cover {
+    height: calc(100vh - 110px);
+  }
+  h3 {
+    font-size: 10vmin;
+    width: 100vw;
+    padding: 0 30px;
+    box-sizing: border-box;
+  }
+  .module {
+    flex-wrap: wrap;
+    height: auto;
+  }
+  .media {
+    min-height: 100vmin;
+  }
+  .textContainer {
+    min-width: 100vw;
+    font-size: 7vmin;
+    box-sizing: border-box;
+    padding: 10px 10px;
+  }
+  .cat {
+    width: 70vmin;
+    height: 70vmin;
+  }
+  .shade {
+    padding: 15vmin 0;
+  }
+  .name {
+    font-size: 6vmin;
+  }
+  h5 {
+    font-size: 8vmin;
+  }
+  .view {
+    font-size: 4vmin;
+    padding: 4vmin 7vmin;
+  }
 }
