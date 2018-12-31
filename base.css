@@ -5,6 +5,11 @@
   margin: 0;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
 }
 
 #header {
@@ -14,7 +19,7 @@
   box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.1);
   border-bottom: 0px solid #eee;
   overflow: visible;
-  z-index: 9;
+  z-index: 9999;
   background-color: white;
 }
 
@@ -54,14 +59,15 @@ h2:hover {
   display: none;
   justify-content: center;
   animation: fadeIn 0.2s ease;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.9);
   flex-wrap: wrap;
   padding: 5px;
   box-sizing: border-box;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 #categories a {
-  color: #444;
+  color: #999;
   line-height: 40px;
   font-size: 13px;
   min-width: 90px;
@@ -69,13 +75,15 @@ h2:hover {
   margin: 5px;
   text-align: center;
   border-radius: 10px;
-  transition: box-shadow 0.2s ease, background-color 0.2s ease;
-  font-weight: 500;
+  transition: box-shadow 0.2s ease, background-color 0.2s ease,
+    border-color 0.2s ease;
+  font-weight: 400;
+  border: 1px solid transparent;
 }
 
 #categories a:hover {
   /*box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);*/
-  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 a {
@@ -86,6 +94,13 @@ a {
   color: black !important;
   font-weight: 800 !important;
   text-decoration: underline;
+}
+
+#footer {
+  text-align: center;
+  margin: 40px;
+  font-size: 20px;
+  color: #ddd;
 }
 
 /*#photo {

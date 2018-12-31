@@ -2,36 +2,38 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>title</title>
+    <title>The Byte Type</title>
   <meta name="author" content="name">
   <meta name="description" content="description here">
   <meta name="keywords" content="keywords,here">
   <link rel="stylesheet" href="base.css" type="text/css">
   <link rel="stylesheet" href="styles.css" type="text/css">
+
+  <link rel="stylesheet" href="thumbStyles.css" type="text/css">
   </head>
   <body>
       <div id="header">
-          <h1>Tw2nty F1rst</h1>
+          <h1>The Byte Type</h1>
           <div id="nav">
-              <h2>Categories</h2>
-              <h2>Purpose</h2>
-              <h2>Community</h2>
+                  <a><h2>Home</h2></a>
+                  <a><h2>Categories</h2></a>
+                  <a><h2>Search</h2></a>
           </div>
           <div id="categories">
-              <a>Accessories</a>
-              <a>Smart Home</a>
-              <a>Gadgets</a>
-              <a>Music</a>
-              <a>Gaming</a>
-              <a>Mobile</a>
-              <a>Photo / Video</a>
-              <a>Computing</a>
-              <a>Gifts</a>
+              <a href="./category/index.html?name=accessories&page=1&title=Accessories" target="_blank">Accessories</a>
+              <a href="./category/index.html?name=smarthome&page=1&title=Smart_Home" target="_blank">Smart Home</a>
+              <a href="./category/index.html?name=gadgets&page=1&title=Gadgets" target="_blank">Gadgets</a>
+              <a href="./category/index.html?name=music&page=1&title=Music" target="_blank">Music</a>
+              <a href="./category/index.html?name=gaming&page=1&title=Gaming" target="_blank">Gaming</a>
+              <a href="./category/index.html?name=mobile&page=1&title=Mobile" target="_blank">Mobile</a>
+              <a href="./category/index.html?name=photovideo&page=1&title=Photo_/_Video" target="_blank">Photo / Video</a>
+              <a href="./category/index.html?name=computing&page=1&title=Computing" target="_blank">Computing</a>
+              <a href="./category/index.html?name=gifts&page=1&title=Gifts" target="_blank">Gifts</a>
               <a id="cancel">Cancel</a>
           </div>
       </div>
       <div id="cover">
-          <h3>Amazon, curated for the classist of tech lovers</h3>
+          <h3>Amazon, curated for the classiest of tech lovers</h3>
       </div>
       <div class="module">
           <div class="media">
@@ -45,64 +47,64 @@
           <h4>Easily navigate to Amazon for Prime accessibility and price discounts</h4></div>
       </div>
       <h5>Begin by selecting a category</h5>
-      <div id="cats">
-          <div class="cat">
+      <div id="thumbContainer">
+          <div class="item">
               <div class="thumb" style='background-image:url("images/computing.jpg")'></div>
               <div class="shade">
                   <h6 class="name">Computing</h6>
                   <a><h6 class="view">View</h6></a>
               </div>
           </div>
-          <div class="cat">
+          <div class="item">
               <div class="thumb" style='background-image:url("images/gadgets.jpg")'></div>
               <div class="shade">
                   <h6 class="name">Gadgets</h6>
                   <a><h6 class="view">View</h6></a>
               </div>
           </div>
-          <div class="cat">
+          <div class="item">
               <div class="thumb" style='background-image:url("images/gaming.jpg")'></div>
               <div class="shade">
                   <h6 class="name">Gaming</h6>
                   <a><h6 class="view">View</h6></a>
               </div>
           </div>
-          <div class="cat">
+          <div class="item">
               <div class="thumb" style='background-image:url("images/mobile.jpg")'></div>
               <div class="shade">
                   <h6 class="name">Mobile</h6>
                   <a><h6 class="view">View</h6></a>
               </div>
           </div>
-          <div class="cat">
+          <div class="item">
               <div class="thumb" style='background-image:url("images/music.jpg")'></div>
               <div class="shade">
                   <h6 class="name">Music</h6>
                   <a><h6 class="view">View</h6></a>
               </div>
           </div>
-          <div class="cat">
-              <div class="thumb" style='background-image:url("images/photovideo.jpg")'></div>
+          <div class="item">
+              <div class="thumb" style='background-image:url("images/photoVideo.jpg")'></div>
               <div class="shade">
                   <h6 class="name">Photo / Video</h6>
                   <a><h6 class="view">View</h6></a>
               </div>
           </div>
-          <div class="cat">
+          <div class="item">
               <div class="thumb" style='background-image:url("images/wearableTech.jpg")'></div>
               <div class="shade">
                   <h6 class="name">Accessories</h6>
                   <a><h6 class="view">View</h6></a>
               </div>
           </div>
-          <div class="cat">
+          <div class="item">
               <div class="thumb" style='background-image:url("images/smartHome.jpg")'></div>
               <div class="shade">
                   <h6 class="name">Smart Home</h6>
                   <a><h6 class="view">View</h6></a>
               </div>
           </div>
-          <div class="cat">
+          <div class="item">
               <div class="thumb" style='background-image:url("images/gifts.jpg")'></div>
               <div class="shade">
                   <h6 class="name">Gifts</h6>
@@ -115,7 +117,10 @@
           <a><img src="https://vignette.wikia.nocookie.net/hayday/images/f/f0/Apple_Store_Button.svg/revision/latest?cb=20180220002249"/></a>
           <a><img src="https://cdn-images-1.medium.com/max/1600/1*EiZrcN_DIapbZaxutxbZRA.png"/></a>
       </div>
+      <p id="footer">The Byte Type</p>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
-      <script src="./functions.js"></script>
+      <script src="./functions.js"></script>\
+      <script src="./thumbFunctions.js"></script>
+      <script src="./base.js"></script>
   </body>
 </html>

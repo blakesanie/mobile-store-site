@@ -1,0 +1,113 @@
+#thumbContainer {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 10px;
+}
+
+.item {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  margin: 20px;
+}
+
+.thumb {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+
+.shade {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  padding: 34px 20px;
+  box-sizing: border-box;
+  pointer-events: none;
+  border-radius: 20px;
+}
+
+h6 {
+  text-align: center;
+}
+
+.name {
+  color: white;
+  font-size: 20px;
+}
+
+.view {
+  background-color: white;
+  font-size: 16px;
+  border-radius: 10px;
+  transition: transform 0.2s ease;
+  padding: 15px 30px;
+}
+
+.view:hover {
+  transform: scale(1.05);
+}
+
+@media screen and (max-width: 540px) {
+  #cover {
+    height: calc(100vh - 110px);
+  }
+  h3 {
+    font-size: 8vmin;
+    width: 100vw;
+    padding: 0 30px;
+    box-sizing: border-box;
+  }
+  #thumbContainer {
+    padding: 0 0px;
+  }
+  .module {
+    flex-wrap: wrap;
+    height: auto;
+  }
+  .media {
+    min-height: 100vmin;
+  }
+  .textContainer {
+    min-width: 100vw;
+    font-size: 7vmin;
+    box-sizing: border-box;
+    padding: 10px 10px;
+  }
+  .item {
+    margin: 10px;
+    width: calc((100vw - 60px) / 2);
+    height: calc((100vw - 60px) / 2);
+  }
+  .shade {
+    padding: 8vmin 0;
+  }
+  .name {
+    font-size: 5vmin;
+  }
+  h5 {
+    font-size: 6vmin;
+  }
+  .view {
+    font-size: 3vmin;
+    padding: 3vmin 6vmin;
+    font-size: 4vmin;
+  }
+}
