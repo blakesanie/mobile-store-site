@@ -16,13 +16,13 @@ $(document).on("touchstart", ".item", function() {
   fadeIn($(this));
 });
 
-$(document).on("mousedown", "#clickAllOff", function() {
+/*$(document).on("mousedown", "#clickAllOff", function() {
   fadeOutAllExcept(-1);
 });
 
 $(document).on("touchstart", "#clickAllOff", function() {
   fadeOutAllExcept(-1);
-});
+});*/
 
 //touchstart
 
