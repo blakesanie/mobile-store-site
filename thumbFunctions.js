@@ -6,18 +6,18 @@ $(document).on("mousedown", ".item", function(e) {
   fadeIn($(this));
 });
 
-$(document).on("touchstart", ".clickOff", function(e) {
+$(document).on("touchend", ".clickOff", function(e) {
   fadeOut($(this));
 });
 
-$(document).on("touchstart", ".item", function(e) {
+$(document).on("touchend", ".item", function(e) {
   fadeIn($(this));
 });
 
 $(document).on("mousedown", "#clickAllOff", function() {
   fadeOutAllExcept(-1);
 });
-$(document).on("touchstart", "#clickAllOff", function() {
+$(document).on("touchend", "#clickAllOff", function() {
   fadeOutAllExcept(-1);
 });
 
