@@ -21,8 +21,8 @@ $(document).on("touchend", "#clickAllOff", function() {
   fadeOutAllExcept(-1);
 });
 
-$(document).on("mouseleave", ".clickOff", function() {
-  fadeOut($(this));
+$(document).on("mouseleave", ".shade", function() {
+  fadeOut($(this).find(".clickOff"));
 });
 $(document).on("mouseenter", ".item", function() {
   fadeIn($(this));
@@ -34,7 +34,7 @@ function fadeOut(element) {
 
 function fadeIn(element) {
   var index = element.index();
-  fadeOutAllExcept(index - 1);
+  fadeOutAllExcept(index - 0);
   $(".item").each(function(i) {
     if (i != index) {
       fadeOut($(this).find(".clickOff"));
