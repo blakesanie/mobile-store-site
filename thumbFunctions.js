@@ -1,8 +1,8 @@
-$(document).on("click", ".shade:not(.view)", function() {
+$(document).on("mousedown", ".shade:not(.view)", function() {
   $(this).css({ opacity: 0, "pointer-events": "none" });
 });
 
-$(document).on("click", ".item", function() {
+$(document).on("mousedown", ".item", function() {
   var opacity = $(this)
     .find(".shade")
     .css("opacity");
@@ -14,7 +14,7 @@ $(document).on("click", ".item", function() {
 });
 
 //$(".item").hover(function() {}, function() {});
-
+/*
 $(document).on("mouseenter", ".item", function() {
   $(this)
     .find(".shade")
@@ -32,3 +32,4 @@ $(document).on("mouseleave", ".item", function() {
       "pointer-events": "none"
     });
 });
+*/
