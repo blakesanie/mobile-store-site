@@ -1,3 +1,5 @@
+var sortingAlgo = "alphabetical";
+
 var params;
 $(document).ready(function() {
   var url = window.location.href;
@@ -17,7 +19,6 @@ $(document).ready(function() {
     params[segments[i]] = segments[i + 1];
   }
   params.page = parseInt(params.page) || 1;
-  console.log(params);
 
   $("h5").text("Page " + params.page);
   $("h3").text(params.title.split("_").join(" "));
@@ -32,13 +33,14 @@ $(document).ready(function() {
 
 function loadProducts() {
   var category = params.name;
-
+  $("#thumbContainer").empty();
   $.ajax({
     url:
       "https://mobile-store-blakesanie.herokuapp.com/getProductsByCat/" +
-      category,
+      category +
+      "/" +
+      sortingAlgo,
     success: function(result, status, error) {
-      console.log(result);
       for (var product of result) {
         showProduct(product);
       }
@@ -51,7 +53,6 @@ function loadProducts() {
 
 function showProduct(product) {
   var { name, price, amazonUrl, thumbUrl } = product;
-  console.log(thumbUrl);
   $("#thumbContainer").append(
     '<div class="item"><div class="thumb" style="background-image:url(' +
       thumbUrl +
@@ -90,6 +91,74 @@ $("#prev").click(function() {
 $("#next").click(function() {
   goToPage(params.page + 1);
 });
+
+var sortingAlgos = {
+  "abc-xyz": "alphabetical",
+  "$-$$$": "priceLowToHigh",
+  "$$$-$": "priceHighToLow",
+  Popular: "alphabetical"
+};
+
+$("#sortingContainer li")
+  .not(":eq(0)")
+  .not("#cancel")
+  .click(function() {
+    var a = $("#sortingContainer li").eq(0);
+    var b = $(this);
+    var aText = a.text();
+    var bText = b.text();
+    sortingAlgo = sortingAlgos[bText];
+    a.text(bText);
+    b.text(aText);
+    loadProducts();
+    //closeSortingContainer(); might do this, not sure yet
+  });
+/*
+$("#alphabetical").click(function() {
+  console.log("alphabetical");
+  sortingAlgo = "alphabetical";
+  loadProducts();
+});
+
+$("#priceLowToHigh").click(function() {
+  console.log("priceLowToHigh");
+  sortingAlgo = "priceLowToHigh";
+  loadProducts();
+});
+
+$("#priceHighToLow").click(function() {
+  console.log("priceHighToLow");
+  sortingAlgo = "priceHighToLow";
+  loadProducts();
+});
+*/
+$("#sortingContainer").hover(
+  function() {
+    openSortingContainer();
+  },
+  function() {
+    closeSortingContainer();
+  }
+);
+
+$("#sortingContainer #cancel").click(function() {
+  closeSortingContainer();
+});
+
+function openSortingContainer() {
+  $("li:nth-child(n+2)").css({
+    "line-height": "30px",
+    opacity: 1
+  });
+}
+
+function closeSortingContainer() {
+  console.log("close");
+  $("li:nth-child(n+2)").css({
+    "line-height": 0,
+    opacity: 0
+  });
+}
 
 function goToPage(num) {
   window.location.href =
