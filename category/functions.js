@@ -10,12 +10,15 @@ $(document).ready(function() {
     .join(",")
     .split(",")
     .slice(1);
-  params = {};
+  params = {
+    title: "Accessories" //default
+  };
   for (var i = 0; i < segments.length; i += 2) {
     params[segments[i]] = segments[i + 1];
   }
-  params.page = parseInt(params.page);
+  params.page = parseInt(params.page) || 1;
   console.log(params);
+
   $("h5").text("Page " + params.page);
   $("h3").text(params.title.split("_").join(" "));
   if (params.page == 1) {
@@ -23,7 +26,57 @@ $(document).ready(function() {
     $("#first").addClass("disabled");
   }
   $(document).attr("title", params.title.split("_").join(" "));
+
+  loadProducts();
 });
+
+function loadProducts() {
+  var category = params.title
+    .replace("_", "")
+    .replace("/", "")
+    .toLowerCase();
+
+  $.ajax({
+    url:
+      "https://mobile-store-blakesanie.herokuapp.com/getProductsByCat/" +
+      category,
+    success: function(result, status, error) {
+      console.log(result);
+      for (var product of result) {
+        showProduct(product);
+      }
+    },
+    error: function(xhr, status, error) {
+      console.log(error);
+    }
+  });
+}
+
+function showProduct(product) {
+  var { name, price, amazonUrl, thumbUrl } = product;
+  console.log(thumbUrl);
+  $("#thumbContainer").append(
+    '<div class="item"><img src="' +
+      thumbUrl +
+      '"/><div class="loading"></div><div class="thumb" style="background-image:url(' +
+      thumbUrl +
+      ')"></div><div class="shade"><h6 class="name">' +
+      name +
+      '</h6><h6 class="price">$' +
+      price +
+      '</h6><a href="' +
+      amazonUrl +
+      '" target="_blank"><h6 class="view">View</h6></a></div></div>'
+  );
+  /*$("#thumbContainer").waitForImages(
+    function() {
+      alert("All images have loaded.");
+    },
+    function(loaded, count, success) {
+      $(this).css("opacity", "1");
+    }
+);*/
+}
 
 $("#first").click(function() {
   goToPage(1);

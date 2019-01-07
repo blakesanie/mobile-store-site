@@ -8,23 +8,60 @@
 
 .item {
   position: relative;
-  width: 220px;
-  height: 220px;
+  width: 260px;
+  height: 260px;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
   margin: 20px;
+  animation: fadeIn ease 1s;
+}
+
+img {
+  display: none;
+}
+
+.loading {
+  position: absolute;
+  top: calc(50% - 20px);
+  left: calc(50% - 20px);
+  height: 40px;
+  width: 40px;
+}
+
+.loading:after {
+  content: " ";
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid #ddd;
+  border-color: #ddd transparent #ddd transparent;
+  animation: spin 1.2s linear infinite;
 }
 
 .thumb {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  width: calc(100% - 20px);
-  height: calc(100% - 20px);
-  background-size: cover;
+  top: 20px;
+  left: 20px;
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif");
   border-radius: 10px;
+  background-color: white;
+  opacity: 1;
+}
+
+.thumb .fadeIn {
+  animation: fadeIn ease 2s;
+}
+
+.cat .thumb {
+  background-size: cover !important;
 }
 
 .shade {
@@ -38,7 +75,7 @@
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
-  padding: 34px 20px;
+  padding: 20px 20px;
   box-sizing: border-box;
   pointer-events: none;
   border-radius: 20px;
@@ -50,7 +87,12 @@ h6 {
 
 .name {
   color: white;
-  font-size: 20px;
+  font-size: 18px;
+}
+
+.price {
+  color: white;
+  font-size: 14px;
 }
 
 .view {
@@ -59,13 +101,14 @@ h6 {
   border-radius: 10px;
   transition: transform 0.2s ease;
   padding: 15px 30px;
+  color: black;
 }
 
 .view:hover {
   transform: scale(1.05);
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 620px) {
   #cover {
     height: calc(100vh - 110px);
   }
@@ -97,10 +140,13 @@ h6 {
     height: calc((100vw - 60px) / 2);
   }
   .shade {
-    padding: 8vmin 0;
+    padding: 8vmin 4vmin;
   }
   .name {
-    font-size: 5vmin;
+    font-size: 3.5vmin;
+  }
+  .price {
+    font-size: 3vmin;
   }
   h5 {
     font-size: 6vmin;
@@ -109,5 +155,23 @@ h6 {
     font-size: 3vmin;
     padding: 3vmin 6vmin;
     font-size: 4vmin;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

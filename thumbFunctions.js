@@ -15,21 +15,22 @@ $(".item").click(function() {
   }
 });
 
-$(".item").hover(
-  function() {
-    $(this)
-      .find(".shade")
-      .css({
-        opacity: 1,
-        "pointer-events": "auto"
-      });
-  },
-  function() {
-    $(this)
-      .find(".shade")
-      .css({
-        opacity: 0,
-        "pointer-events": "none"
-      });
-  }
-);
+$(".item").hover(function() {}, function() {});
+
+$(document).on("mouseenter", ".item", function() {
+  $(this)
+    .find(".shade")
+    .css({
+      opacity: 1,
+      "pointer-events": "auto"
+    });
+});
+
+$(document).on("mouseleave", ".item", function() {
+  $(this)
+    .find(".shade")
+    .css({
+      opacity: 0,
+      "pointer-events": "none"
+    });
+});

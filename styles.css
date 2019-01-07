@@ -3,7 +3,7 @@
   height: calc(100vh - 60px);
   width: 100vw;
   background-image: url("./images/macbook.jpg");
-  background-attachment: fixed;
+  /*background-attachment: fixed;*/
   background-position: 50% 60%;
   background-size: cover;
 }
