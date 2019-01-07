@@ -1,4 +1,5 @@
-var sortingAlgo = "name/1";
+var sortAlgos = ["name/1", "name/-1", "price/1", "price/-1"];
+var sortNames = ["abc-xyz", "Popular", "$-$$$", "$$$-$"];
 
 var params;
 $(document).ready(function() {
@@ -19,6 +20,7 @@ $(document).ready(function() {
     params[segments[i]] = segments[i + 1];
   }
   params.page = parseInt(params.page) || 1;
+  params.sort = parseInt(params.sort) || 0;
   params.name = params.title
     .replace("_", "")
     .replace("/", "")
@@ -33,18 +35,44 @@ $(document).ready(function() {
   $(document).attr("title", params.title.split("_").join(" "));
 
   loadProducts();
+  loadSortingContainer();
 });
+
+function loadSortingContainer() {
+  if (params.sort != 0) {
+    var a = $("#sortingContainer li").eq(0);
+    var b = $("#sortingContainer li").eq(params.sort);
+    var aText = a.text();
+    var bText = b.text();
+    a.text(bText);
+    b.text(aText);
+  }
+  /*var elements = [sortNames[params.sort]];
+  for (var i = 0; i < 4; i++) {
+    if (i != params.sort) {
+      elements.push(sortNames[i]);
+    }
+  }
+  elements = elements.map(function(item) {
+    return "<li>" + item + "</li>";
+  });
+  var html = elements.join("") + "<li id='cancel'>Cancel</li>";
+  $("#sortingContainer ul").append(html);*/
+}
 
 function loadProducts() {
   var category = params.name;
+  var sortAlgo = sortAlgos[params.sort];
   $("#thumbContainer").empty();
+  $("#thumbContainer").append("<div class='loading'></div");
   $.ajax({
     url:
       "https://mobile-store-blakesanie.herokuapp.com/getProductsByCat/" +
       category +
       "/" +
-      sortingAlgo,
+      sortAlgo,
     success: function(result, status, error) {
+      $(".loading").remove();
       for (var product of result.products) {
         showProduct(product);
       }
@@ -96,13 +124,6 @@ $("#next").click(function() {
   goToPage(params.page + 1);
 });
 
-var sortingAlgos = {
-  "abc-xyz": "name/1",
-  "$-$$$": "price/1",
-  "$$$-$": "price/-1",
-  Popular: "name/-1"
-};
-
 $("#sortingContainer li")
   .not(":eq(0)")
   .not("#cancel")
@@ -111,7 +132,8 @@ $("#sortingContainer li")
     var b = $(this);
     var aText = a.text();
     var bText = b.text();
-    sortingAlgo = sortingAlgos[bText];
+    console.log(bText);
+    params.sort = sortNames.indexOf(bText);
     a.text(bText);
     b.text(aText);
     loadProducts();
@@ -166,5 +188,11 @@ function closeSortingContainer() {
 
 function goToPage(num) {
   window.location.href =
-    "./index.html?" + "title=" + params.title + "&page=" + num;
+    "./index.html?" +
+    "title=" +
+    params.title +
+    "&page=" +
+    num +
+    "&sort=" +
+    params.sort;
 }
