@@ -1,4 +1,4 @@
-var sortingAlgo = "alphabetical";
+var sortingAlgo = "name/1";
 
 var params;
 $(document).ready(function() {
@@ -19,6 +19,10 @@ $(document).ready(function() {
     params[segments[i]] = segments[i + 1];
   }
   params.page = parseInt(params.page) || 1;
+  params.name = params.title
+    .replace("_", "")
+    .replace("/", "")
+    .toLowerCase();
 
   $("h5").text("Page " + params.page);
   $("h3").text(params.title.split("_").join(" "));
@@ -41,7 +45,7 @@ function loadProducts() {
       "/" +
       sortingAlgo,
     success: function(result, status, error) {
-      for (var product of result) {
+      for (var product of result.products) {
         showProduct(product);
       }
     },
@@ -93,10 +97,10 @@ $("#next").click(function() {
 });
 
 var sortingAlgos = {
-  "abc-xyz": "alphabetical",
-  "$-$$$": "priceLowToHigh",
-  "$$$-$": "priceHighToLow",
-  Popular: "alphabetical"
+  "abc-xyz": "name/1",
+  "$-$$$": "price/1",
+  "$$$-$": "price/-1",
+  Popular: "name/-1"
 };
 
 $("#sortingContainer li")
@@ -162,10 +166,5 @@ function closeSortingContainer() {
 
 function goToPage(num) {
   window.location.href =
-    "./index.html?name=" +
-    params.name +
-    "&title=" +
-    params.title +
-    "&page=" +
-    num;
+    "./index.html?" + "title=" + params.title + "&page=" + num;
 }
