@@ -1,19 +1,27 @@
-$(document).on("mousedown", ".clickOff", function(e) {
+$(document).on("mousedown", ".clickOff", function() {
   //clickedOff($(this), e);
   fadeOut($(this));
 });
 
-$(document).on("mousedown", ".item", function(e) {
+$(document).on("mousedown", ".item", function() {
   fadeIn($(this));
 });
 
-$(document).on("touchstart", ".clickOff", function(e) {
+$(document).on("touchstart", ".clickOff", function() {
   //clickedOff($(this), e);
   fadeOut($(this));
 });
 
-$(document).on("touchstart", ".item", function(e) {
+$(document).on("touchstart", ".item", function() {
   fadeIn($(this));
+});
+
+$(document).on("mousedown", "#clickAllOff", function() {
+  fadeOutAllExcept(-1);
+});
+
+$(document).on("touchstart", "#clickAllOff", function() {
+  fadeOutAllExcept(-1);
 });
 
 //touchstart
@@ -34,10 +42,17 @@ function fadeOut(element /*, e*/) {
 }
 
 function fadeIn(element) {
-  var opacity = element.find(".shade").css("opacity");
-  if (opacity == 0) {
-    element.find(".shade").css({ opacity: 1, "pointer-events": "auto" });
-  }
+  var index = element.index;
+  fadeOutAllExcept(index);
+  element.find(".shade").css({ opacity: 1, "pointer-events": "auto" });
+}
+
+function fadeOutAllExcept(index) {
+  $(".item").each(function(i) {
+    if (i != index) {
+      fadeOut($(this).find(".clickOff"));
+    }
+  });
 }
 /*
 function clickedOff(element, e) {
