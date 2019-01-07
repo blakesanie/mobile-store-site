@@ -85,6 +85,14 @@ img {
   border-radius: 20px;
 }
 
+.clickOff {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  /*background-color: green;*/
+  z-index: 2;
+}
+
 h6 {
   text-align: center;
 }
@@ -92,11 +100,17 @@ h6 {
 .name {
   color: white;
   font-size: 18px;
+  z-index: 99999;
 }
 
 .price {
   color: white;
   font-size: 14px;
+  z-index: 99999;
+}
+
+.shade a {
+  z-index: 99999;
 }
 
 .view {

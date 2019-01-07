@@ -55,7 +55,7 @@ function showProduct(product) {
   $("#thumbContainer").append(
     '<div class="item"><div class="thumb" style="background-image:url(' +
       thumbUrl +
-      ')"></div><div class="shade"><h6 class="name">' +
+      ')"></div><div class="shade"><div class="clickOff"></div><h6 class="name">' +
       name +
       '</h6><h6 class="price">$' +
       price +
