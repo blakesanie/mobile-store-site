@@ -8,11 +8,11 @@
 
 .item {
   position: relative;
-  width: 260px;
-  height: 260px;
+  width: 240px;
+  height: 240px;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
   margin: 20px;
   animation: fadeIn ease 1s;
 }
@@ -108,7 +108,7 @@ h6 {
   transform: scale(1.05);
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 580px) {
   #cover {
     height: calc(100vh - 110px);
   }

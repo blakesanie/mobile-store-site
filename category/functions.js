@@ -31,10 +31,7 @@ $(document).ready(function() {
 });
 
 function loadProducts() {
-  var category = params.title
-    .replace("_", "")
-    .replace("/", "")
-    .toLowerCase();
+  var category = params.name;
 
   $.ajax({
     url:
@@ -56,9 +53,7 @@ function showProduct(product) {
   var { name, price, amazonUrl, thumbUrl } = product;
   console.log(thumbUrl);
   $("#thumbContainer").append(
-    '<div class="item"><img src="' +
-      thumbUrl +
-      '"/><div class="loading"></div><div class="thumb" style="background-image:url(' +
+    '<div class="item"><div class="thumb" style="background-image:url(' +
       thumbUrl +
       ')"></div><div class="shade"><h6 class="name">' +
       name +
@@ -75,7 +70,12 @@ function showProduct(product) {
     function(loaded, count, success) {
       $(this).css("opacity", "1");
     }
-);*/
+);
+<img src="' +
+  thumbUrl +
+  '"/>
+<div class="loading"></div>
+*/
 }
 
 $("#first").click(function() {

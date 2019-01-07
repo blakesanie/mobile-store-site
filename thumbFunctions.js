@@ -1,10 +1,8 @@
-$(".shade")
-  .not(".view")
-  .click(function() {
-    $(this).css({ opacity: 0, "pointer-events": "none" });
-  });
+$(document).on("click", ".shade:not(.view)", function() {
+  $(this).css({ opacity: 0, "pointer-events": "none" });
+});
 
-$(".item").click(function() {
+$(document).on("click", ".item", function() {
   var opacity = $(this)
     .find(".shade")
     .css("opacity");
@@ -15,7 +13,7 @@ $(".item").click(function() {
   }
 });
 
-$(".item").hover(function() {}, function() {});
+//$(".item").hover(function() {}, function() {});
 
 $(document).on("mouseenter", ".item", function() {
   $(this)
