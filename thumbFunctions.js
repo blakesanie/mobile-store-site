@@ -34,7 +34,7 @@ function fadeOut(element) {
 
 function fadeIn(element) {
   var index = element.index();
-  fadeOutAllExcept(index);
+  fadeOutAllExcept(index - 1);
   $(".item").each(function(i) {
     if (i != index) {
       fadeOut($(this).find(".clickOff"));
@@ -48,6 +48,7 @@ function fadeIn(element) {
 
 function fadeOutAllExcept(index) {
   $(".item").each(function(i) {
+    console.log(i, index);
     if (i != index) {
       fadeOut($(this).find(".clickOff"));
     }
