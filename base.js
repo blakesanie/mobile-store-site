@@ -2,7 +2,8 @@ $("#nav a:nth-of-type(2)").click(function() {
   showCategories();
 });
 
-$("#cover, #cancel").click(function() {
+$("body > *:not(#header)").click(function() {
+  console.log("hide");
   hideCategories();
 });
 

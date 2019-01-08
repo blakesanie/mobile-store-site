@@ -22,8 +22,8 @@ $(document).ready(function() {
   params.page = parseInt(params.page) || 1;
   params.sort = parseInt(params.sort) || 0;
   params.name = params.title
-    .replace("_", "")
     .replace("/", "")
+    .replace(/_/g, "")
     .toLowerCase();
 
   $("h5").text("Page " + params.page);
@@ -61,16 +61,18 @@ function loadSortingContainer() {
 }
 
 function loadProducts() {
-  var category = params.name;
   var sortAlgo = sortAlgos[params.sort];
   $("#thumbContainer").empty();
   $("#thumbContainer").append("<div class='loading'></div");
+  var url =
+    "https://mobile-store-blakesanie.herokuapp.com/getProductsByCat/" +
+    params.name +
+    "/";
+  if (params.name == "gifts") {
+    url = "https://mobile-store-blakesanie.herokuapp.com/getGifts/";
+  }
   $.ajax({
-    url:
-      "https://mobile-store-blakesanie.herokuapp.com/getProductsByCat/" +
-      category +
-      "/" +
-      sortAlgo,
+    url: url + sortAlgo,
     success: function(result, status, error) {
       $(".loading").remove();
       for (var product of result.products) {
