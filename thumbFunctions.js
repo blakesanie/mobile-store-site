@@ -1,3 +1,5 @@
+var selectedIndex = -1;
+
 $(document).on("mousedown", ".clickOff", function(e) {
   fadeOut($(this));
 });
@@ -6,18 +8,18 @@ $(document).on("mousedown", ".item", function(e) {
   fadeIn($(this));
 });
 
-$(document).on("touchend", ".clickOff", function(e) {
+$(document).on("touchstart", ".clickOff", function(e) {
   fadeOut($(this));
 });
 
-$(document).on("touchend", ".item", function(e) {
+$(document).on("touchstart", ".item", function(e) {
   fadeIn($(this));
 });
 
 $(document).on("mousedown", "#clickAllOff", function() {
   fadeOutAllExcept(-1);
 });
-$(document).on("touchend", "#clickAllOff", function() {
+$(document).on("touchstart", "#clickAllOff", function() {
   fadeOutAllExcept(-1);
 });
 
@@ -29,21 +31,18 @@ $(document).on("mouseenter", ".item", function() {
 });
 
 function fadeOut(element) {
-  element.parent().css({ opacity: 0, "pointer-events": "none" });
+  console.log("fadeout");
+  element.parent().css({ opacity: 0 });
+  setTimeout(function() {
+    element.parent().css({ "pointer-events": "none" });
+  }, 300);
 }
 
 function fadeIn(element) {
+  console.log("fadein");
   var index = element.index();
-  fadeOutAllExcept(index - 0);
-  $(".item").each(function(i) {
-    if (i != index) {
-      fadeOut($(this).find(".clickOff"));
-    }
-  });
-  var opacity = element.find(".shade").css("opacity");
-  if (opacity == 0) {
-    element.find(".shade").css({ opacity: 1, "pointer-events": "auto" });
-  }
+  fadeOutAllExcept(index);
+  element.find(".shade").css({ opacity: 1, "pointer-events": "auto" });
 }
 
 function fadeOutAllExcept(index) {

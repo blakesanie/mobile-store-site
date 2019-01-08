@@ -169,7 +169,7 @@ $("#sortingContainer").hover(
   }
 );
 
-$("#sortingContainer #cancel").click(function() {
+$("#sortingContainer, #header, h3").click(function() {
   closeSortingContainer();
 });
 
