@@ -140,7 +140,15 @@ $("#sortingContainer li")
     b.text(aText);
     loadProducts();
     //closeSortingContainer(); might do this, not sure yet
-  });
+  }); /*
+$("#sortingContainer").hover(
+  function() {
+    openSortingContainer();
+  },
+  function() {
+    closeSortingContainer();
+  }
+);*/
 /*
 $("#alphabetical").click(function() {
   console.log("alphabetical");
@@ -159,17 +167,13 @@ $("#priceHighToLow").click(function() {
   sortingAlgo = "priceHighToLow";
   loadProducts();
 });
-*/
-$("#sortingContainer").hover(
-  function() {
-    openSortingContainer();
-  },
-  function() {
-    closeSortingContainer();
-  }
-);
+*/ $(
+  "#sortingContainer"
+).click(function() {
+  openSortingContainer();
+});
 
-$("#sortingContainer, #header, h3").click(function() {
+$("#thumbContainer, #header, h3").click(function() {
   closeSortingContainer();
 });
 
