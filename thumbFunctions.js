@@ -42,7 +42,10 @@ function fadeIn(element) {
   console.log("fadein");
   var index = element.index();
   fadeOutAllExcept(index);
-  element.find(".shade").css({ opacity: 1, "pointer-events": "auto" });
+  element.find(".shade").css({ opacity: 1 });
+  setTimeout(function() {
+    element.find(".shade").css({ "pointer-events": "auto" });
+  }, 50);
 }
 
 function fadeOutAllExcept(index) {
