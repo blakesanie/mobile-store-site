@@ -18,7 +18,10 @@
   z-index: 2;
 }
 
-//.item:hover
+.item:hover .shade {
+  opacity: 1;
+  pointer-events: auto;
+}
 
 img {
   display: none;
