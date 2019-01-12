@@ -6,12 +6,33 @@ $(document).on("mousedown", ".item", function(e) {
   fadeIn($(this));
 });*/
 
+$(document).ready(function() {});
+
 $(document).on("touchend", ".clickOff", function(e) {
-  fadeOut($(this));
+  var element = $(this);
+  fadeOut(element);
+  element
+    .parent()
+    .find(".amazonUrl")
+    .css({
+      "pointer-events": "none"
+    });
 });
 
 $(document).on("touchend", ".item", function(e) {
-  fadeIn($(this));
+  var element = $(this);
+  element
+    .parent()
+    .find(".amazonUrl")
+    .css({
+      "pointer-events": "none"
+    });
+  fadeIn(element);
+  setTimeout(function() {
+    element.find(".amazonUrl").css({
+      "pointer-events": "auto"
+    });
+  }, 500);
 });
 
 /*$(document).on("mousedown", "#clickAllOff", function() {
@@ -30,12 +51,6 @@ $(document).on("mouseenter", ".item", function() {
 
 function fadeOut(element) {
   element.parent().css({ opacity: 0, "pointer-events": "none" });
-  element
-    .parent()
-    .find(".amazonUrl")
-    .css({
-      "pointer-events": "none"
-    });
 }
 
 function fadeIn(element) {
@@ -44,11 +59,6 @@ function fadeIn(element) {
   var opacity = element.find(".shade").css("opacity");
   if (opacity < 1) {
     element.find(".shade").css({ opacity: 1, "pointer-events": "auto" });
-    setTimeout(function() {
-      element.find(".amazonUrl").css({
-        "pointer-events": "auto"
-      });
-    }, 500);
   }
 }
 
