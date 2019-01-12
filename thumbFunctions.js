@@ -48,7 +48,7 @@ function fadeIn(element) {
       element.find(".amazonUrl").css({
         "pointer-events": "auto"
       });
-    }, 50);
+    }, 100);
   }
 }
 
