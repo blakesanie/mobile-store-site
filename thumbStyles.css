@@ -15,22 +15,18 @@
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
   margin: 20px;
   animation: fadeIn ease 1s;
-  z-index: 2;
 }
-
-/*.item:hover .shade {
-  opacity: 1;
-  pointer-events: auto;
-}*/
 
 img {
   display: none;
 }
 
 .loading {
+  position: absolute;
+  top: calc(50% - 20px);
+  left: calc(50% - 20px);
   height: 40px;
   width: 40px;
-  margin: 100px 0;
 }
 
 .loading:after {
@@ -80,7 +76,7 @@ img {
   opacity: 0;
   transition: opacity 0.3s ease;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   flex-direction: column;
   padding: 20px 20px;
@@ -94,7 +90,7 @@ img {
   position: absolute;
   height: 100%;
   width: 100%;
-  z-index: 1;
+  background-color: green;
 }
 
 h6 {
@@ -107,14 +103,9 @@ h6 {
   /*z-index: 99999;*/
 }
 
-.cat .name {
-  margin-bottom: 30px;
-}
-
 .price {
   color: white;
-  font-size: 18px;
-  margin: 16px 0;
+  font-size: 14px;
 }
 
 .shade a {
@@ -158,38 +149,34 @@ h6 {
     min-width: 100vw;
     font-size: 7vmin;
     box-sizing: border-box;
-    padding: 6px 6px;
+    padding: 10px 10px;
   }
   .item {
-    margin: 6px;
-    width: calc((100vw - 36px) / 2);
-    height: calc((100vw - 36px) / 2);
+    margin: 10px;
+    width: calc((100vw - 60px) / 2);
+    height: calc((100vw - 60px) / 2);
   }
   .thumb {
-    top: 6px;
-    left: 6px;
-    width: calc(100% - 12px);
-    height: calc(100% - 12px);
+    top: 10px;
+    left: 10px;
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
   }
   .shade {
-    padding: 0 4vmin;
+    padding: 8vmin 4vmin;
   }
   .name {
-    font-size: 4vmin;
-  }
-  .cat .name {
-    margin-bottom: 5vmin;
+    font-size: 3.5vmin;
   }
   .price {
-    font-size: 4vmin;
-    margin: 3vmin 0;
+    font-size: 3vmin;
   }
   h5 {
     font-size: 6vmin;
   }
   .view {
     font-size: 3vmin;
-    padding: 2vmin 6vmin;
+    padding: 3vmin 6vmin;
     font-size: 4vmin;
   }
 }

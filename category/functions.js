@@ -96,7 +96,7 @@ function showProduct(product) {
       price +
       '</h6><a href="' +
       amazonUrl +
-      '" target="_blank"><h6 class="view">View</h6></a></div></div>'
+      '" target="_blank" class="amazonUrl"><h6 class="view">View</h6></a></div></div>'
   );
   /*$("#thumbContainer").waitForImages(
     function() {
@@ -155,13 +155,11 @@ $("#alphabetical").click(function() {
   sortingAlgo = "alphabetical";
   loadProducts();
 });
-
 $("#priceLowToHigh").click(function() {
   console.log("priceLowToHigh");
   sortingAlgo = "priceLowToHigh";
   loadProducts();
 });
-
 $("#priceHighToLow").click(function() {
   console.log("priceHighToLow");
   sortingAlgo = "priceHighToLow";

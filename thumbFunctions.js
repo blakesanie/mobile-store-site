@@ -1,5 +1,3 @@
-//var selectedIndex = -1;
-
 /*$(document).on("mousedown", ".clickOff", function(e) {
   fadeOut($(this));
 });
@@ -31,15 +29,27 @@ $(document).on("mouseenter", ".item", function() {
 });
 
 function fadeOut(element) {
-  console.log("fadeout");
   element.parent().css({ opacity: 0, "pointer-events": "none" });
+  element
+    .parent()
+    .find(".amazonUrl")
+    .css({
+      "pointer-events": "none"
+    });
 }
 
 function fadeIn(element) {
-  console.log("fadein");
   var index = element.index();
   fadeOutAllExcept(index);
-  element.find(".shade").css({ opacity: 1, "pointer-events": "auto" });
+  var opacity = element.find(".shade").css("opacity");
+  if (opacity < 1) {
+    element.find(".shade").css({ opacity: 1, "pointer-events": "auto" });
+    setTimeout(function() {
+      element.find(".amazonUrl").css({
+        "pointer-events": "auto"
+      });
+    }, 50);
+  }
 }
 
 function fadeOutAllExcept(index) {
