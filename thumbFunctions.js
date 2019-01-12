@@ -23,12 +23,12 @@ $(document).on("touchend", "#clickAllOff", function() {
   fadeOutAllExcept(-1);
 });
 
-/*$(document).on("mouseleave", ".shade", function() {
+$(document).on("mouseleave", ".shade", function() {
   fadeOut($(this).find(".clickOff"));
 });
 $(document).on("mouseenter", ".item", function() {
   fadeIn($(this));
-});*/
+});
 
 function fadeOut(element) {
   console.log("fadeout");
