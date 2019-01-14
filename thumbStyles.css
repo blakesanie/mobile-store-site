@@ -95,6 +95,7 @@ img {
   height: 100%;
   width: 100%;
   z-index: 1;
+  background-color: green;
 }
 
 h6 {
@@ -128,6 +129,7 @@ h6 {
   transition: transform 0.2s ease;
   padding: 15px 30px;
   color: black;
+  z-index: 999999;
 }
 
 .view:hover {

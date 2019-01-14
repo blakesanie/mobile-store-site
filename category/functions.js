@@ -94,9 +94,9 @@ function showProduct(product) {
       name +
       '</h6><h6 class="price">$' +
       price +
-      '</h6><a href="' +
+      '</h6><h6 class="view" link="' +
       amazonUrl +
-      '" target="_blank" class="amazonUrl"><h6 class="view">View</h6></a></div></div>'
+      '">View</h6></div></div>'
   );
   /*$("#thumbContainer").waitForImages(
     function() {
