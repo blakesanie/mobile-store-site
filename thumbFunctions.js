@@ -49,6 +49,6 @@ function fadeOutAllExcept(index) {
 $(document).on("touchend mousedown", ".view", function(e) {
   var element = $(this);
   if (canPressView) {
-    window.open(element.attr("link"));
+    window.open(element.attr("link"), "_self");
   }
 });
