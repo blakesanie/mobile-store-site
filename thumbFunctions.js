@@ -10,29 +10,12 @@ $(document).ready(function() {});
 
 $(document).on("touchend", ".clickOff", function(e) {
   var element = $(this);
-  fadeOut(element);
-  element
-    .parent()
-    .find(".amazonUrl")
-    .css({
-      "pointer-events": "none"
-    });
+  fadeOut(element, true);
 });
 
 $(document).on("touchend", ".item", function(e) {
   var element = $(this);
-  element
-    .parent()
-    .find(".amazonUrl")
-    .css({
-      "pointer-events": "none"
-    });
-  fadeIn(element);
-  setTimeout(function() {
-    element.find(".amazonUrl").css({
-      "pointer-events": "auto"
-    });
-  }, 500);
+  fadeIn(element, true);
 });
 
 /*$(document).on("mousedown", "#clickAllOff", function() {
@@ -43,22 +26,25 @@ $(document).on("touchend", "#clickAllOff", function() {
 });
 
 $(document).on("mouseleave", ".shade", function() {
-  fadeOut($(this).find(".clickOff"));
+  fadeOut($(this).find(".clickOff"), false);
 });
 $(document).on("mouseenter", ".item", function() {
-  fadeIn($(this));
+  fadeIn($(this), false);
 });
 
-function fadeOut(element) {
+function fadeOut(element, mobile) {
   element.parent().css({ opacity: 0, "pointer-events": "none" });
 }
 
-function fadeIn(element) {
+function fadeIn(element, mobile) {
   var index = element.index();
   fadeOutAllExcept(index);
   var opacity = element.find(".shade").css("opacity");
   if (opacity < 1) {
-    element.find(".shade").css({ opacity: 1, "pointer-events": "auto" });
+    element.find(".shade").css({ opacity: 1 });
+    setTimeout(function() {
+      element.find(".shade").css({ "pointer-events": "auto" });
+    }, mobile ? 301 : 0); //ios waits 300ms to see if double tap
   }
 }
 
