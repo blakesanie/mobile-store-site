@@ -33,9 +33,7 @@ function fadeIn(element) {
   var index = element.index();
   fadeOutAllExcept(index);
   var opacity = element.find(".shade").css("opacity");
-  if (opacity < 1) {
-    element.find(".shade").css({ opacity: 1, "pointer-events": "auto" });
-  }
+  element.find(".shade").css({ opacity: 1, "pointer-events": "auto" });
 }
 
 function fadeOutAllExcept(index) {

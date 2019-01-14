@@ -117,10 +117,6 @@ h6 {
   margin: 16px 0;
 }
 
-.shade a {
-  z-index: 99999;
-}
-
 .view {
   background-color: white;
   font-size: 16px;
@@ -128,7 +124,8 @@ h6 {
   transition: transform 0.2s ease;
   padding: 15px 30px;
   color: black;
-  z-index: 999999;
+  z-index: 9999;
+  cursor: pointer;
 }
 
 .view:hover {
