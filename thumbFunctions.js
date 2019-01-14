@@ -44,7 +44,7 @@ function fadeIn(element, mobile) {
     element.find(".shade").css({ opacity: 1 });
     setTimeout(function() {
       element.find(".shade").css({ "pointer-events": "auto" });
-    }, mobile ? 301 : 0); //ios waits 300ms to see if double tap
+    }, mobile ? 500 : 0); //ios waits 300ms to see if double tap
   }
 }
 
