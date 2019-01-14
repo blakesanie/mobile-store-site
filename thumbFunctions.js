@@ -10,7 +10,7 @@ $(document).ready(function() {});
 
 $(document).on("touchend", ".clickOff", function(e) {
   var element = $(this);
-  fadeOut(element, true);
+  fadeOut(element);
 });
 
 $(document).on("touchend", ".item", function(e) {
@@ -26,7 +26,7 @@ $(document).on("touchend", "#clickAllOff", function() {
 });
 
 $(document).on("mouseleave", ".shade", function() {
-  fadeOut($(this).find(".clickOff"), false);
+  fadeOut($(this).find(".clickOff"));
 });
 $(document).on("mouseenter", ".item", function() {
   fadeIn($(this), false);
@@ -39,13 +39,10 @@ function fadeOut(element, mobile) {
 function fadeIn(element, mobile) {
   var index = element.index();
   fadeOutAllExcept(index);
-  var opacity = element.find(".shade").css("opacity");
-  if (opacity < 1) {
-    element.find(".shade").css({ opacity: 1 });
-    setTimeout(function() {
-      element.find(".shade").css({ "pointer-events": "auto" });
-    }, mobile ? 500 : 0); //ios waits 300ms to see if double tap
-  }
+  element.find(".shade").css({ opacity: 1 });
+  setTimeout(function() {
+    element.find(".shade").css({ "pointer-events": "auto" });
+  }, mobile ? 1000 : 0); //ios waits 300ms to see if double tap
 }
 
 function fadeOutAllExcept(index) {
