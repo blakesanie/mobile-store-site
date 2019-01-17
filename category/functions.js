@@ -14,7 +14,7 @@ $(document).ready(function() {
     .split(",")
     .slice(1);
   params = {
-    title: "Accessories" //default
+    title: "Gadgets" //default
   };
   for (var i = 0; i < segments.length; i += 2) {
     params[segments[i]] = segments[i + 1];
