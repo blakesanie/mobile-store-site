@@ -2,6 +2,7 @@
   position: relative;
   height: calc(100vh - 60px);
   width: 100vw;
+  margin-top: 0;
   background-image: url("./images/macbook.jpg");
   /*background-attachment: fixed;*/
   background-position: 50% 60%;

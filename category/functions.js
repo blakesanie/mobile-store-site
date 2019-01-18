@@ -1,4 +1,5 @@
-var sortAlgos = ["name/1", "name/-1", "price/1", "price/-1"];
+var sortFields = ["name", "name", "price", "price"];
+var sortOrders = ["1", "-1", "1", "-1"];
 var sortNames = ["abc-xyz", "Popular", "$-$$$", "$$$-$"];
 
 var params;
@@ -60,24 +61,38 @@ function loadSortingContainer() {
   $("#sortingContainer ul").append(html);*/
 }
 
+var productsLoaded = false;
+var lastPage;
 function loadProducts() {
-  var sortAlgo = sortAlgos[params.sort];
   $("#thumbContainer").empty();
   $("#thumbContainer").append("<div class='loading'></div");
   var url =
-    "https://mobile-store-blakesanie.herokuapp.com/getProductsByCat/" +
-    params.name +
-    "/";
+    "https://mobile-store-blakesanie.herokuapp.com/getProductsByCat?category=" +
+    params.name;
   if (params.name == "gifts") {
     url = "https://mobile-store-blakesanie.herokuapp.com/getGifts/";
   }
+  url +=
+    "&sortBy=" +
+    sortFields[params.sort] +
+    "&order=" +
+    sortOrders[params.sort] +
+    "&page=" +
+    params.page;
   $.ajax({
-    url: url + sortAlgo,
+    url: url,
     success: function(result, status, error) {
+      var count = result.count;
+      if (24 * params.page >= count) {
+        $("#next").addClass("disabled");
+        $("#last").addClass("disabled");
+      }
       $(".loading").remove();
       for (var product of result.products) {
         showProduct(product);
       }
+      lastPage = Math.ceil(result.count / 24);
+      productsLoaded = true;
     },
     error: function(xhr, status, error) {
       console.log(error);
@@ -87,6 +102,13 @@ function loadProducts() {
 
 function showProduct(product) {
   var { name, price, amazonUrl, thumbUrl } = product;
+  //console.log(amazonUrl);
+  var refIndex = amazonUrl.lastIndexOf("/ref");
+  if (refIndex != -1) {
+    amazonUrl = amazonUrl.substring(0, refIndex);
+  }
+  amazonUrl += "?tag=bsanie00-20";
+  console.log(amazonUrl);
   $("#thumbContainer").append(
     '<div class="item"><div class="thumb" style="background-image:url(' +
       thumbUrl +
@@ -114,16 +136,16 @@ function showProduct(product) {
 }
 
 $("#first").click(function() {
-  goToPage(1);
+  goToPage(1, params.sort);
 });
 $("#last").click(function() {
-  goToPage(1);
+  goToPage(lastPage, params.sort);
 });
 $("#prev").click(function() {
-  goToPage(params.page - 1);
+  goToPage(params.page - 1, params.sort);
 });
 $("#next").click(function() {
-  goToPage(params.page + 1);
+  goToPage(params.page + 1, params.sort);
 });
 
 $("#sortingContainer li")
@@ -138,7 +160,8 @@ $("#sortingContainer li")
     params.sort = sortNames.indexOf(bText);
     a.text(bText);
     b.text(aText);
-    loadProducts();
+    goToPage(1, params.sort);
+    //loadProducts();
     //closeSortingContainer(); might do this, not sure yet
   }); /*
 $("#sortingContainer").hover(
@@ -190,13 +213,15 @@ function closeSortingContainer() {
   });
 }
 
-function goToPage(num) {
-  window.location.href =
-    "./index.html?" +
-    "title=" +
-    params.title +
-    "&page=" +
-    num +
-    "&sort=" +
-    params.sort;
+function goToPage(num, sort) {
+  if (productsLoaded) {
+    window.location.href =
+      "./index.html?" +
+      "title=" +
+      params.title +
+      "&page=" +
+      num +
+      "&sort=" +
+      sort;
+  }
 }
