@@ -3,10 +3,6 @@
   position: absolute;
 }
 
-#categories {
-  background-color: transparent;
-}
-
 #cover {
   position: fixed;
   height: calc(100vh - 0px);
