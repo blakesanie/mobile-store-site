@@ -7,6 +7,10 @@ $("body > *:not(#header)").click(function() {
   hideCategories();
 });
 
+$("#categories #cancel").click(function() {
+  hideCategories();
+});
+
 function showCategories() {
   $("#categories").css({
     display: "flex"

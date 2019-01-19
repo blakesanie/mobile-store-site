@@ -1,8 +1,15 @@
 $(document).scroll(function() {
-  // var y = $(document).scrollTop();
-  // var height = $(window).height();
-  // var width = $(window).width();
-  // var headerHeight = width > 500 ? 60 : 110;
+  var y = $(document).scrollTop();
+  var height = $(window).height();
+  var width = $(window).width();
+  var headerHeight = width > 500 ? 60 : 110;
+  $("#cover").css({
+    // top: y / -2 + "px",
+    height: height - y + "px"
+  });
+  $("h3").css({
+    opacity: 1 - y / (height - $("h3").height())
+  });
   //$("h3").animate({ scrollTop: y * 100 });
   // if (y > headerHeight) {
   //   $("#cover").css({

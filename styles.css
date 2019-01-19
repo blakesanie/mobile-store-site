@@ -1,16 +1,33 @@
+#header {
+  box-shadow: none;
+  position: absolute;
+}
+
+#categories {
+  background-color: transparent;
+}
+
 #cover {
-  position: relative;
-  height: calc(100vh - 60px);
+  position: fixed;
+  height: calc(100vh - 0px);
   width: 100vw;
   margin-top: 0;
   background-image: url("./images/macbook.jpg");
-  background-attachment: fixed;
+  /* background-attachment: fixed; */
   background-position: 50% 60%;
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  z-index: -999;
+}
+
+#content {
+  position: relative;
+  background-color: white;
+  top: 100vh;
+  padding-bottom: 1px;
 }
 
 h3 {
@@ -82,9 +99,6 @@ h5 {
 }
 
 @media screen and (max-width: 500px) {
-  #cover {
-    height: calc(100vh - 110px);
-  }
   h3 {
     font-size: 10vmin;
     width: 100vw;
