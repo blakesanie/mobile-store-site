@@ -50,3 +50,32 @@ $(document).on("touchend mousedown", ".view", function(e) {
     window.open(element.attr("link"), "_self");
   }
 });
+
+var $grid = $("#thumbContainer").masonry({
+  itemSelector: ".item",
+  gutter: 25,
+  transitionDuration: "0.1s",
+  columnWidth: ".item"
+});
+
+function setProductWidth() {
+  var numCollumns = Math.ceil($("#thumbContainer").width() / 450);
+  var width =
+    ($("#thumbContainer").width() - (25 * (numCollumns - 1) + 50)) /
+    numCollumns;
+  $(".item").css("width", width + "px");
+  console.log(width);
+}
+
+$(document).ready(function() {
+  setProductWidth();
+});
+
+$(window).resize(function() {
+  setProductWidth();
+});
+
+$grid.imagesLoaded().progress(function() {
+  console.log("image loaded");
+  $grid.masonry("layout");
+});

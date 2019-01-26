@@ -91,6 +91,12 @@ function loadProducts() {
       for (var product of result.products) {
         showProduct(product);
       }
+      $grid.masonry("reloadItems");
+      $grid.imagesLoaded().progress(function() {
+        console.log("image loaded");
+        $grid.masonry("layout");
+      });
+
       lastPage = Math.ceil(result.count / 24);
       productsLoaded = true;
     },
@@ -110,9 +116,9 @@ function showProduct(product) {
   amazonUrl += "?tag=bsanie00-20";
   console.log(amazonUrl);
   $("#thumbContainer").append(
-    '<div class="item"><div class="thumb" style="background-image:url(' +
+    '<div class="item"><img class="thumb" src="' +
       thumbUrl +
-      ')"></div><div class="shade"><div class="clickOff"></div><h6 class="name">' +
+      '"/><div class="shade"><div class="clickOff"></div><h6 class="name">' +
       name +
       '</h6><h6 class="price">$' +
       price +
@@ -120,6 +126,7 @@ function showProduct(product) {
       amazonUrl +
       '">View</h6></div></div>'
   );
+  setProductWidth();
   /*$("#thumbContainer").waitForImages(
     function() {
       alert("All images have loaded.");
