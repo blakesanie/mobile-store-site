@@ -48,24 +48,12 @@ function loadSortingContainer() {
     a.text(bText);
     b.text(aText);
   }
-  /*var elements = [sortNames[params.sort]];
-  for (var i = 0; i < 4; i++) {
-    if (i != params.sort) {
-      elements.push(sortNames[i]);
-    }
-  }
-  elements = elements.map(function(item) {
-    return "<li>" + item + "</li>";
-  });
-  var html = elements.join("") + "<li id='cancel'>Cancel</li>";
-  $("#sortingContainer ul").append(html);*/
 }
 
 var productsLoaded = false;
 var lastPage;
 function loadProducts() {
   $("#thumbContainer").empty();
-  $("#thumbContainer").append("<div class='loading'></div");
   var url =
     "https://mobile-store-blakesanie.herokuapp.com/getProductsByCat?category=" +
     params.name;
@@ -108,13 +96,6 @@ function loadProducts() {
 
 function showProduct(product) {
   var { name, price, amazonUrl, thumbUrl } = product;
-  //console.log(amazonUrl);
-  var refIndex = amazonUrl.lastIndexOf("/ref");
-  if (refIndex != -1) {
-    amazonUrl = amazonUrl.substring(0, refIndex);
-  }
-  amazonUrl += "?tag=bsanie00-20";
-  console.log(amazonUrl);
   $("#thumbContainer").append(
     '<div class="item"><img class="thumb" src="' +
       thumbUrl +
@@ -127,19 +108,6 @@ function showProduct(product) {
       '">View</h6></div></div>'
   );
   setProductWidth();
-  /*$("#thumbContainer").waitForImages(
-    function() {
-      alert("All images have loaded.");
-    },
-    function(loaded, count, success) {
-      $(this).css("opacity", "1");
-    }
-);
-<img src="' +
-  thumbUrl +
-  '"/>
-<div class="loading"></div>
-*/
 }
 
 $("#first").click(function() {
@@ -168,36 +136,9 @@ $("#sortingContainer li")
     a.text(bText);
     b.text(aText);
     goToPage(1, params.sort);
-    //loadProducts();
-    //closeSortingContainer(); might do this, not sure yet
-  }); /*
-$("#sortingContainer").hover(
-  function() {
-    openSortingContainer();
-  },
-  function() {
-    closeSortingContainer();
-  }
-);*/
-/*
-$("#alphabetical").click(function() {
-  console.log("alphabetical");
-  sortingAlgo = "alphabetical";
-  loadProducts();
-});
-$("#priceLowToHigh").click(function() {
-  console.log("priceLowToHigh");
-  sortingAlgo = "priceLowToHigh";
-  loadProducts();
-});
-$("#priceHighToLow").click(function() {
-  console.log("priceHighToLow");
-  sortingAlgo = "priceHighToLow";
-  loadProducts();
-});
-*/ $(
-  "#sortingContainer"
-).click(function() {
+  });
+
+$("#sortingContainer").click(function() {
   openSortingContainer();
 });
 

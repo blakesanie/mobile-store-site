@@ -24,9 +24,12 @@
 }*/
 
 .loading {
+  position: relative;
   height: 40px;
   width: 40px;
   margin: 100px 0;
+  left: 50%;
+  transorm: translateX(-50%);
 }
 
 .loading:after {
@@ -121,66 +124,20 @@ h6 {
 .view:hover {
   transform: scale(1.05);
 }
-/*
-@media screen and (max-width: 580px) {
-  #cover {
-    height: calc(100vh - 110px);
-  }
-  h3 {
-    font-size: 8vmin;
-    width: 100vw;
-    padding: 0 30px;
-    box-sizing: border-box;
-  }
-  #thumbContainer {
-    padding: 0 0px;
-  }
-  .module {
-    flex-wrap: wrap;
-    height: auto;
-  }
-  .media {
-    min-height: 100vmin;
-  }
-  .textContainer {
-    min-width: 100vw;
-    font-size: 7vmin;
-    box-sizing: border-box;
-    padding: 6px 6px;
-  }
-  .item {
-    margin: 6px;
-    width: calc((100vw - 36px) / 2);
-    height: calc((100vw - 36px) / 2);
-  }
-  .thumb {
-    top: 6px;
-    left: 6px;
-    width: calc(100% - 12px);
-    height: calc(100% - 12px);
-  }
-  .shade {
-    padding: 0 4vmin;
-  }
-  .name {
-    font-size: 4vmin;
-  }
-  .cat .name {
-    margin-bottom: 5vmin;
-  }
+
+@media screen and (max-width: 700px) {
   .price {
-    font-size: 4vmin;
-    margin: 3vmin 0;
-  }
-  h5 {
-    font-size: 6vmin;
+    margin: 8px 0;
   }
   .view {
-    font-size: 3vmin;
-    padding: 2vmin 6vmin;
-    font-size: 4vmin;
+    padding: 6px 30px;
   }
-} */
+  .name,
+  .price,
+  .view {
+    font-size: 16px;
+  }
+}
 
 @keyframes fadeIn {
   0% {

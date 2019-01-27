@@ -59,7 +59,7 @@ var $grid = $("#thumbContainer").masonry({
 });
 
 function setProductWidth() {
-  var numCollumns = Math.ceil($("#thumbContainer").width() / 450);
+  var numCollumns = Math.ceil($("#thumbContainer").width() / 490);
   var width =
     ($("#thumbContainer").width() - (25 * (numCollumns - 1) + 50)) /
     numCollumns;
