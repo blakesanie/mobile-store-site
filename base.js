@@ -32,7 +32,7 @@ function hideCategories() {
     opacity: 0
   });
   $("#header").css({
-    "background-color": "transparent"
+    // "background-color": "transparent"
   });
   setTimeout(function() {
     $("#categories").css({

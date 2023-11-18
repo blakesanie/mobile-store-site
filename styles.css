@@ -4,12 +4,12 @@
 }
 
 #cover {
-  position: fixed;
+  /* position: fixed; */
   height: calc(100vh - 0px);
   width: 100vw;
   margin-top: 0;
-  background-image: url("./images/macbook.jpg");
-  /* background-attachment: fixed; */
+  background-image: url("./oliur.jpg");
+  background-attachment: fixed;
   background-position: 50% 60%;
   background-size: cover;
   display: flex;
@@ -22,14 +22,17 @@
 #content {
   position: relative;
   background-color: white;
-  top: 100vh;
   padding-bottom: 1px;
 }
 
 h3 {
-  font-size: 40px;
+  font-size: 5vmin;
   text-align: center;
-  width: 350px;
+  width: 50vmin;
+  /* color: white;
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 50px;
+  border-radius: 20px; */
 }
 
 .module {
